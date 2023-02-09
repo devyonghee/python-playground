@@ -23,6 +23,14 @@ class TestDistance(TestCase):
         # then
         self.assertEqual(Distance(7), sumDistance)
 
+    def test_operator(self):
+        # given
+        two = Distance(2)
+        five = Distance(5)
+        # when & then
+        self.assertEqual(two <= five, True)
+        self.assertEqual(two >= five, False)
+
 
 if __name__ == '__main__':
     unittest.main()

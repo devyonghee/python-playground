@@ -15,13 +15,13 @@ def distance_argument_value(args, kwargs):
 
 
 class Distance:
-    _factory: dict = {}
+    __factory: dict = {}
 
     def __new__(cls: Type[T], *args, **kwargs) -> T:
         distance_value = distance_argument_value(args, kwargs)
-        if distance_value not in cls._factory:
-            cls._factory[distance_value] = super().__new__(cls)
-        return cls._factory[distance_value]
+        if distance_value not in cls.__factory:
+            cls.__factory[distance_value] = super().__new__(cls)
+        return cls.__factory[distance_value]
 
     def __init__(self, value: int = DEFAULT_POSITION):
         self.__validate_type(value)
@@ -31,8 +31,21 @@ class Distance:
     def __add__(self, other: 'Distance') -> 'Distance':
         return Distance(self.__value + other.__value)
 
+    def __lt__(self, o: 'Distance') -> bool:
+        self.__validate_operated_type(o)
+        return self.__value.__lt__(o.__value)
+
+    def __gt__(self, o: 'Distance') -> bool:
+        self.__validate_operated_type(o)
+        return self.__value.__gt__(o.__value)
+
     def __eq__(self, other: object) -> bool:
         return isinstance(other, Distance) and self.__value == other.__value
+
+    @staticmethod
+    def __validate_operated_type(o):
+        if not isinstance(o, Distance):
+            raise TypeError(f'operated distance must be Distance type')
 
     @staticmethod
     def __validate_type(value):
