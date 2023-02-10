@@ -1,3 +1,5 @@
+from typing import Sequence
+
 MAX_NAME_LENGTH = 5
 
 
@@ -23,3 +25,12 @@ class CarName:
     def __eq__(self, o: object) -> bool:
         return isinstance(o, CarName) \
             and self.__name == o.__name
+
+
+DELIMITER = ','
+
+
+def separate_names(names: str) -> Sequence[CarName]:
+    if type(names) is not str or not names.strip():
+        raise TypeError(f'names({names}) must not be blank string')
+    return [CarName(name) for name in names.strip().split(DELIMITER)]

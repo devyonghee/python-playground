@@ -28,8 +28,8 @@ class TestDistance(TestCase):
         two = Distance(2)
         five = Distance(5)
         # when & then
-        self.assertEqual(two <= five, True)
-        self.assertEqual(two >= five, False)
+        self.assertEqual(two < five, True)
+        self.assertEqual(two > five, False)
 
 
 if __name__ == '__main__':

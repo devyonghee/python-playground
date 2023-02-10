@@ -13,9 +13,9 @@ class TestRacingHistory(TestCase):
         zero_distance_track = Track(ONLY_GO_CAR, Distance(0))
         one_distance_track1 = Track(ONLY_STOP_CAR, Distance(1))
         one_distance_track2 = Track(ONLY_STOP_CAR, Distance(1))
-        history = RacingHistory((
+        history = RacingHistory([
             (zero_distance_track, one_distance_track1, one_distance_track2),
-        ))
+        ])
         # when
         tracks = history.last_furthest_tracks
         # then

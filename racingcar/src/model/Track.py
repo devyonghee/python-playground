@@ -16,15 +16,16 @@ class Track:
     def next_round_track(self) -> 'Track':
         return Track(self.__car, self.__distance + self.__car.movement.distance)
 
-    @staticmethod
-    def __validate_type(car, distance):
-        if not isinstance(car, RacingCar):
-            raise TypeError(f'car({car}) must be RacingCar Type')
-        if not isinstance(distance, Distance):
-            raise TypeError(f'distance({distance}) must be Distance Type')
-
     def equal_distance(self, o: 'Track'):
         return self.__distance.__eq__(o.__distance)
+
+    @property
+    def car(self) -> RacingCar:
+        return self.__car
+
+    @property
+    def distance(self) -> Distance:
+        return self.__distance
 
     def __lt__(self, o: 'Track') -> bool:
         self.__validate_operated_type(o)
@@ -33,6 +34,13 @@ class Track:
     def __gt__(self, o: 'Track') -> bool:
         self.__validate_operated_type(o)
         return self.__distance.__gt__(o.__distance)
+
+    @staticmethod
+    def __validate_type(car, distance):
+        if not isinstance(car, RacingCar):
+            raise TypeError(f'car({car}) must be RacingCar Type')
+        if not isinstance(distance, Distance):
+            raise TypeError(f'distance({distance}) must be Distance Type')
 
     def __eq__(self, o: object) -> bool:
         return isinstance(o, Track) \

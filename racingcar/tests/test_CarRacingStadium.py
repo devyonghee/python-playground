@@ -2,6 +2,7 @@ import unittest
 from unittest import TestCase
 from racingcar.src.model.CarRacingStadium import CarRacingStadium
 from racingcar.src.model.Distance import Distance
+from racingcar.src.model.RacingHistory import RacingHistory
 from racingcar.src.model.Track import Track
 from test_RacingCar import ONLY_GO_CAR
 
@@ -21,8 +22,11 @@ class TestCarRacingStadium(TestCase):
         # when
         history = one_go_car_in_stadium.race_history(cycle_count)
         # then
-        self.assertEqual(cycle_count, len(history))
-        self.assertEqual((Track(ONLY_GO_CAR, Distance(3)),), history[-1])
+        self.assertEqual(RacingHistory([
+            [Track(ONLY_GO_CAR, Distance(1))],
+            [Track(ONLY_GO_CAR, Distance(2))],
+            [Track(ONLY_GO_CAR, Distance(3))]
+        ]), history)
 
 
 if __name__ == '__main__':

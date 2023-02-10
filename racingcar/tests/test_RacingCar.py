@@ -14,11 +14,11 @@ class TestRacingCar(TestCase):
 
     @parameterized.expand([[CarName("test"), ''], ['', RandomMoveStrategy()]])
     def test_create_invalid_type_raised_type_error(self, car_name, move_strategy):
-        self.assertRaises(TypeError, RacingCar(car_name, move_strategy))
+        self.assertRaises(TypeError, lambda: RacingCar(car_name, move_strategy))
 
 
 ONLY_GO_CAR = RacingCar(CarName('go'), OnlyGoMoveStrategy())
-ONLY_STOP_CAR = RacingCar(CarName('go'), OnlyStopMoveStrategy())
+ONLY_STOP_CAR = RacingCar(CarName('stop'), OnlyStopMoveStrategy())
 
 if __name__ == '__main__':
     unittest.main()

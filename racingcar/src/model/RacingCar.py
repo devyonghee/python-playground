@@ -6,7 +6,7 @@ from racingcar.src.model.Movement import Movement
 class RacingCar:
 
     def __init__(self, name: CarName, move_strategy: MoveStrategy) -> None:
-        self.__validate_type(move_strategy, name)
+        self.__validate_type(name, move_strategy)
         self.__name = name
         self.__move_strategy = move_strategy
 
@@ -19,7 +19,7 @@ class RacingCar:
         return self.__move_strategy.operated_movement()
 
     @staticmethod
-    def __validate_type(move_strategy, name):
+    def __validate_type(name, move_strategy):
         if not isinstance(name, CarName):
             raise TypeError(f'name({name}) must be CarName type')
         if not isinstance(move_strategy, MoveStrategy):
