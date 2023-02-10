@@ -42,6 +42,10 @@ class Distance:
     def __eq__(self, other: object) -> bool:
         return isinstance(other, Distance) and self.__value == other.__value
 
+    @property
+    def value(self):
+        return self.__value
+
     @staticmethod
     def __validate_operated_type(o):
         if not isinstance(o, Distance):

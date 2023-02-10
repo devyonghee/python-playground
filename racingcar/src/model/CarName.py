@@ -15,6 +15,10 @@ class CarName:
         if type(name) is not str:
             raise TypeError(f'name must be string type: {name}')
 
+    @property
+    def value(self) -> str:
+        return self.__name
+
     @staticmethod
     def __validate_length(name):
         if not name.strip():
