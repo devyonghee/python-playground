@@ -13,7 +13,7 @@ class TestRandomEngineStrategy(unittest.TestCase):
     def test_operated_movement(self, return_random_value, expected_movement):
         with mock.patch('random.randrange') as mock_randrange:
             mock_randrange.return_value = return_random_value
-            self.assertIs(random_engine.operated_movement(), expected_movement)
+            self.assertIs(random_engine.movement(), expected_movement)
 
 
 if __name__ == '__main__':

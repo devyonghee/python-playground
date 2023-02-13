@@ -1,6 +1,11 @@
+from racingcar.src.model.Distance import Distance
+
 from racingcar.src.model.MoveStrategy import MoveStrategy
 from racingcar.src.model.CarName import CarName
 from racingcar.src.model.Movement import Movement
+
+GO_DISTANCE = Distance(1)
+STOP_DISTANCE = Distance(0)
 
 
 class RacingCar:
@@ -15,8 +20,10 @@ class RacingCar:
         return self.__name
 
     @property
-    def movement(self) -> Movement:
-        return self.__move_strategy.operated_movement()
+    def moved_distance(self) -> Distance:
+        if self.__move_strategy.movement() is Movement.GO:
+            return GO_DISTANCE
+        return STOP_DISTANCE
 
     @staticmethod
     def __validate_type(name, move_strategy):

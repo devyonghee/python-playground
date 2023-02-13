@@ -17,7 +17,7 @@ class RandomMoveStrategy(MoveStrategy):
             cls.__instance = super().__new__(cls)
         return cls.__instance
 
-    def operated_movement(self) -> Movement:
+    def movement(self) -> Movement:
         return Movement.GO if self.__is_over_than_move_limit() else Movement.STOP
 
     @staticmethod

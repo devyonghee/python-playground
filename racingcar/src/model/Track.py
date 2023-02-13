@@ -14,7 +14,7 @@ class Track:
 
     @property
     def next_round_track(self) -> 'Track':
-        return Track(self.__car, self.__distance + self.__car.movement.distance)
+        return Track(self.__car, self.__distance + self.__car.moved_distance)
 
     def equal_distance(self, o: 'Track'):
         return self.__distance.__eq__(o.__distance)
