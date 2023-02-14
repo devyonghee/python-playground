@@ -1,9 +1,8 @@
 from unittest import TestCase
 
-from racingcar.src.model.CarName import CarName
+from model.test_RacingCar import ONLY_GO_CAR, ONLY_STOP_CAR
 from racingcar.src.model.Distance import Distance
 from racingcar.src.model.Track import Track
-from test_RacingCar import ONLY_GO_CAR, ONLY_STOP_CAR
 
 
 class TestTrack(TestCase):

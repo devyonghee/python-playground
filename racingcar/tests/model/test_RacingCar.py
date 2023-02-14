@@ -1,11 +1,12 @@
 import unittest
 from unittest import TestCase
 from parameterized import parameterized
+
+from model.test_MoveStrategy import OnlyStopMoveStrategy, OnlyGoMoveStrategy
 from racingcar.src.model.CarName import CarName
 from racingcar.src.model.Distance import Distance
 from racingcar.src.model.RacingCar import RacingCar
 from racingcar.src.model.RandomMoveStrategy import RandomMoveStrategy
-from test_MoveStrategy import OnlyGoMoveStrategy, OnlyStopMoveStrategy
 
 
 class TestRacingCar(TestCase):
