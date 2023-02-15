@@ -2,15 +2,15 @@ import random
 from typing import Collection, Type
 
 from lotto.src.model.Lotto import Lotto, LOTTO_SIZE
-from lotto.src.model.LottoGenerator import LottoGenerator
+from lotto.src.model.LottoMachine import LottoMachine
 from lotto.src.model.LottoNumber import LottoNumber, MIN_NUMBER, MAX_NUMBER
 
 
-class AutoLottoGenerator(LottoGenerator):
+class AutoLottoMachine(LottoMachine):
     __instance = None
     __all_numbers = [LottoNumber(number) for number in range(MIN_NUMBER, MAX_NUMBER + 1)]
 
-    def __new__(cls: Type['AutoLottoGenerator']) -> 'AutoLottoGenerator':
+    def __new__(cls: Type['AutoLottoMachine']) -> 'AutoLottoMachine':
         if not cls.__instance:
             cls.__instance = super().__new__(cls)
         return cls.__instance
@@ -23,7 +23,7 @@ class AutoLottoGenerator(LottoGenerator):
     @staticmethod
     def __validate_count_type(count):
         if type(count) is not int:
-            raise TypeError('count must be int type')
+            raise TypeError(f'count must be {int} type')
 
     @staticmethod
     def __validate_negative(count):
