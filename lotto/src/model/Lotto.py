@@ -25,3 +25,17 @@ class Lotto:
     def __validate_duplicate(numbers):
         if len(set(numbers)) is not len(numbers):
             raise ValueError(f'numbers({numbers}) must not have duplicate values')
+
+    def matched_count(self, lotto: 'Lotto') -> int:
+        self.__validate_lotto_type(lotto)
+        return len(set(self.__numbers) & set(lotto.__numbers))
+
+    def __contains__(self, number: LottoNumber) -> bool:
+        if not isinstance(number, LottoNumber):
+            raise TypeError(f'number({number}) must be {LottoNumber} type')
+        return number in self.__numbers
+
+    @staticmethod
+    def __validate_lotto_type(lotto):
+        if not isinstance(lotto, Lotto):
+            raise TypeError(f'lotto({lotto}) must be {Lotto} type')

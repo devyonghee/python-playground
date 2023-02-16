@@ -5,9 +5,17 @@ class Money:
         self.__value = value
 
     def __floordiv__(self, other: 'Money') -> int:
+        self.__validate_money_type(other)
+        return self.__value // other.__value
+
+    def __add__(self, other: 'Money') -> 'Money':
+        self.__validate_money_type(other)
+        return Money(self.__value + other.__value)
+
+    @staticmethod
+    def __validate_money_type(other: 'Money'):
         if not isinstance(other, Money):
             raise TypeError(f'operated money({other}) must be Money type')
-        return self.__value // other.__value
 
     @staticmethod
     def __validate_value(value):

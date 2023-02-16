@@ -14,4 +14,4 @@ class TestAutoLottoMachine(TestCase):
         # when
         lottos = AutoLottoMachine().lottos(count)
         # then
-        self.assertEquals(count, len(lottos))
+        self.assertEqual(count, len(lottos))

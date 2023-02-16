@@ -16,4 +16,4 @@ class TestLottoStore(TestCase):
         # when
         purchased_lottos = LottoStore(AutoLottoMachine()).purchased_lottos(money)
         # then
-        self.assertEquals(expected_count, len(purchased_lottos))
+        self.assertEqual(expected_count, len(purchased_lottos))
