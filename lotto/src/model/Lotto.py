@@ -26,6 +26,10 @@ class Lotto:
         if len(set(numbers)) is not len(numbers):
             raise ValueError(f'numbers({numbers}) must not have duplicate values')
 
+    @property
+    def numbers(self) -> Collection[LottoNumber]:
+        return self.__numbers
+
     def matched_count(self, lotto: 'Lotto') -> int:
         self.__validate_lotto_type(lotto)
         return len(set(self.__numbers) & set(lotto.__numbers))

@@ -26,6 +26,10 @@ class Rank(Enum):
     def price(self) -> Money:
         return self.__price
 
+    @property
+    def matched_count(self) -> int:
+        return self.__matched_count
+
     @staticmethod
     def value_of(count: int, is_matched_bonus: bool) -> 'Rank':
         return next(rank for rank in Rank if rank.__condition(count, is_matched_bonus))
@@ -41,3 +45,6 @@ class Ranks:
 
     def sum_price(self) -> Money:
         return sum(rank.price for rank in self.__ranks)
+
+    def count(self, target: Rank) -> int:
+        return len([rank for rank in self.__ranks if rank == target])

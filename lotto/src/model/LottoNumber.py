@@ -26,6 +26,10 @@ class LottoNumber:
         self.__validate_number(number)
         self.__number = number
 
+    @property
+    def value(self) -> int:
+        return self.__number
+
     @staticmethod
     def __validate_number(number):
         if type(number) is not int:

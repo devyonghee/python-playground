@@ -15,5 +15,5 @@ def print_ranks(ranks: Ranks):
         print(f'{rank.matched_count}개 일치{bonus_ball_text}({rank.price}원)- {ranks.count(rank)}')
 
 
-def print_benefit_rate(rate: int):
+def print_benefit_rate(rate: float):
     print(f'총 수익률은 {rate}입니다.(기준이 1이기 때문에 결과적으로 손해라는 의미임)')
