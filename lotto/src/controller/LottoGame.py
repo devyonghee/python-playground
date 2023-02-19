@@ -9,14 +9,14 @@ from lotto.src.view.OutputView import print_lottos, print_benefit_rate, print_ra
 
 
 def start():
-    lottos = LottoStore(AutoLottoMachine()) \
+    purchased_lottos = LottoStore(AutoLottoMachine()) \
         .purchased_lottos(Money(input_purchase_amount()))
 
-    print_lottos(lottos)
+    print_lottos(purchased_lottos.lottos)
 
-    ranks = WinnerLotto(__input_lotto(), __input_bonus()).ranks(lottos)
+    ranks = purchased_lottos.ranks(WinnerLotto(__input_lotto(), __input_bonus()))
     print_ranks(ranks)
-    print_benefit_rate((len(lottos) * LOTTO_PRICE.value) / ranks.sum_price().value)
+    print_benefit_rate(ranks.sum_price / purchased_lottos.sum_lottos_price)
 
 
 def __input_lotto() -> Lotto:

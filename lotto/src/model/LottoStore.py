@@ -3,6 +3,7 @@ from typing import Collection
 from lotto.src.model.Lotto import Lotto
 from lotto.src.model.LottoMachine import LottoMachine
 from lotto.src.model.Money import Money
+from lotto.src.model.PurchasedLottos import PurchasedLottos
 
 LOTTO_PRICE = Money(1000)
 
@@ -14,10 +15,10 @@ class LottoStore:
             raise TypeError(f'lotto_generator({lotto_machine}) must be {LottoMachine}')
         self.__lotto_generator = lotto_machine
 
-    def purchased_lottos(self, received_money: Money) -> Collection[Lotto]:
+    def purchased_lottos(self, received_money: Money) -> PurchasedLottos:
         self.__validate_money(received_money)
         purchased_count = received_money // LOTTO_PRICE
-        return self.__lotto_generator.lottos(purchased_count)
+        return PurchasedLottos(self.__lotto_generator.lottos(purchased_count), LOTTO_PRICE)
 
     @staticmethod
     def __validate_money(received_money):

@@ -21,6 +21,10 @@ class TestMoney(TestCase):
     def test_floordiv_ten_thousand(self, dividend, expected_quotient):
         self.assertEqual(expected_quotient, Money(1000) // Money(dividend))
 
+    @parameterized.expand([[10, Money(1000)], [10.0, Money(1000)], [Money(10), Money(1000)]])
+    def test_multiply_hundred_with(self, multiplied_target, expected_money):
+        self.assertEqual(expected_money, Money(100) * multiplied_target)
+
 
 if __name__ == '__main__':
     unittest.main()

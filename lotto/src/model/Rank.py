@@ -43,8 +43,9 @@ class Ranks:
             raise TypeError(f'rank({ranks}) must be {Rank} {Collection} type')
         self.__ranks = ranks
 
+    @property
     def sum_price(self) -> Money:
-        return sum(rank.price for rank in self.__ranks)
+        return sum([rank.price for rank in self.__ranks], Money(0))
 
     def count(self, target: Rank) -> int:
         return len([rank for rank in self.__ranks if rank == target])

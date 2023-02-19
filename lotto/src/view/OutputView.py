@@ -12,7 +12,7 @@ def print_lottos(lottos: Collection[Lotto]):
 def print_ranks(ranks: Ranks):
     for rank in [Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST]:
         bonus_ball_text = ", 보너스 볼 일치 " if rank == Rank.SECOND else " "
-        print(f'{rank.matched_count}개 일치{bonus_ball_text}({rank.price}원)- {ranks.count(rank)}')
+        print(f'{rank.matched_count}개 일치{bonus_ball_text}({rank.price.value}원)- {ranks.count(rank)}')
 
 
 def print_benefit_rate(rate: float):
